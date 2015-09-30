@@ -8,7 +8,7 @@ main = return ()
 isPrime,isPrimeNaive :: Integer -> Bool
 -- relies on primes < x
 isPrime x
-    | x < 5 = isPrimeNaive x
+    | x <= 3 = isPrimeNaive x
     | otherwise = undefined
 
 isPrimeNaive x = length (divisorsNaive x) == 2
