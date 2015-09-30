@@ -12,3 +12,7 @@ main = hspec $ do
             Main.compress (take 5 $ repeat 1) `shouldBe` [1]
         it "compresses amma to ama" $
             Main.compress "amma" `shouldBe` "ama"
+
+    describe "differential" $ do
+        it "differential [1, 2, 3] is [1, 1]" $
+            Main.differential [1, 2, 3] `shouldBe` [1, 1]
