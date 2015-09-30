@@ -16,3 +16,7 @@ main = hspec $ do
     describe "differential" $ do
         it "differential [1, 2, 3] is [1, 1]" $
             Main.differential [1, 2, 3] `shouldBe` [1, 1]
+
+    describe "functionBreaks" $ do
+        it "[1, 2, 3, 4, 3, 2, 1] breaks as [1, -1]" $
+            Main.functionBreaks ( [1.. 4] ++ [3, 2.. 1] ) `shouldBe` [1, -1]

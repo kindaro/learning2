@@ -15,3 +15,6 @@ differential :: Num a => [a] -> [a]
 differential [] = []
 differential [x] = []
 differential (x1:x2:xs) = (x2 - x1) : (differential $ x2 : xs)
+
+
+functionBreaks = compress . (map signum) . differential
