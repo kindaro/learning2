@@ -5,10 +5,10 @@ import Test.Hspec
 
 main :: IO ()
 main = hspec $ do
-    describe "trivial" $ do
-        it "says 2 * 2 equals 4" $
-            2 * 2 == 4 `shouldBe` True
-        it "says 2 * 2 equals 5" $
-            2 * 2 == 5 `shouldBe` True
-        it "says 2 * undefined equals 4" $
-            2 * undefined == 4 `shouldBe` True
+    describe "compress" $ do
+        it "compresses [1..10] to the same" $
+            Main.compress [1..10] `shouldBe` [1..10]
+        it "compresses take 5 $ repeat 1 to [1]" $
+            Main.compress (take 5 $ repeat 1) `shouldBe` [1]
+        it "compresses amma to ama" $
+            Main.compress "amma" `shouldBe` "ama"
