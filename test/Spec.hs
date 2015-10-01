@@ -1,22 +1,22 @@
 module Spec where
 
-import qualified Main
+import Main
 import Test.Hspec
 
-main :: IO ()
-main = hspec $ do
+spec :: IO ()
+spec = hspec $ do
     describe "compress" $ do
         it "compresses [1..10] to the same" $
-            Main.compress [1..10] `shouldBe` [1..10]
+            compress [1..10] `shouldBe` [1..10]
         it "compresses take 5 $ repeat 1 to [1]" $
-            Main.compress (take 5 $ repeat 1) `shouldBe` [1]
+            compress (take 5 $ repeat 1) `shouldBe` [1]
         it "compresses amma to ama" $
-            Main.compress "amma" `shouldBe` "ama"
+            compress "amma" `shouldBe` "ama"
 
     describe "differential" $ do
         it "differential [1, 2, 3] is [1, 1]" $
-            Main.differential [1, 2, 3] `shouldBe` [1, 1]
+            differential [1, 2, 3] `shouldBe` [1, 1]
 
     describe "functionBreaks" $ do
         it "[1, 2, 3, 4, 3, 2, 1] breaks as [1, -1]" $
-            Main.functionBreaks ( [1.. 4] ++ [3, 2.. 1] ) `shouldBe` [1, -1]
+            functionBreaks ( [1.. 4] ++ [3, 2.. 1] ) `shouldBe` [1, -1]
