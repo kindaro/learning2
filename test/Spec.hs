@@ -12,6 +12,10 @@ spec = hspec $ do
             compress (take 5 $ repeat 1) `shouldBe` [1]
         it "compresses amma to ama" $
             compress "amma" `shouldBe` "ama"
+        it "compresses [1] to [1]" $
+            compress [1] `shouldBe` [1]
+        it "compresses [] to []" $
+             ([] :: [()]) `shouldBe` ([])
 
     describe "differential" $ do
         it "differential [1, 2, 3] is [1, 1]" $
