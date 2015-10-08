@@ -24,3 +24,6 @@ spec = hspec $ do
     describe "functionBreaks" $ do
         it "[1, 2, 3, 4, 3, 2, 1] breaks as [1, -1]" $
             functionBreaks ( [1.. 4] ++ [3, 2.. 1] ) `shouldBe` [1, -1]
+
+
+it' = it "--"
