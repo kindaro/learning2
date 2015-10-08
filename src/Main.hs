@@ -19,3 +19,18 @@ differential _ = []
 
 functionBreaks = compress . (map signum) . differential
 
+
+existsPairWithSum m xs
+    | filter (<1) (differential xs) /= [] = Nothing -- We require the list be strictly ascending.
+    | n < 2 = Nothing
+    | n == 2 && tupleGreater == m = Just True
+    | n == 2 && tupleGreater /= m = Just False
+    | tupleGreater > m && tupleLesser < m = Just False
+    | tupleGreater < m = Just False
+    | tupleLesser > m = existsPairWithSum m (reverse $ tail rs)
+    | otherwise = Just True
+    where
+        n = length xs
+        rs = reverse xs
+        tupleGreater = rs!!0 + rs!!1 -- Since rs is descending,
+        tupleLesser = rs!!1 + rs!!2  -- tupleLesser is smaller than tupleGreater.

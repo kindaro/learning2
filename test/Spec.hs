@@ -25,5 +25,13 @@ spec = hspec $ do
         it "[1, 2, 3, 4, 3, 2, 1] breaks as [1, -1]" $
             functionBreaks ( [1.. 4] ++ [3, 2.. 1] ) `shouldBe` [1, -1]
 
+    describe "existsPairWithSum" $ do
+        it' $ existsPairWithSum 3 [1] `shouldBe` Nothing
+        it' $ existsPairWithSum 3 [2,1] `shouldBe` Nothing
+        it' $ existsPairWithSum 3 [0,1,2,100] `shouldBe` Just True
+        it' $ existsPairWithSum 3 [0,1,3,100] `shouldBe` Just False
+        it' $ existsPairWithSum 3 [-1,0,1] `shouldBe` Just False
+        it' $ existsPairWithSum 3 [7,8,9] `shouldBe` Just False
+
 
 it' = it "--"
